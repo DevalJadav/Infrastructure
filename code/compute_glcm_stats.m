@@ -1,8 +1,6 @@
 function stats = compute_glcm_stats(gray, nLevels)
-% Compute simple averaged GLCM stats for 4 offsets
 if nargin<2, nLevels = 8; end
 I = im2uint8(gray);
-% quantize
 Iq = floor(double(I)/256 * nLevels) + 1;
 H = size(Iq,1); W = size(Iq,2);
 offsets = [0 1; -1 1; -1 0; -1 -1];
@@ -10,7 +8,6 @@ allContrast = zeros(1,size(offsets,1));
 allEnergy = zeros(1,size(offsets,1));
 allEntropy = zeros(1,size(offsets,1));
 allCorr = zeros(1,size(offsets,1));
-
 for k=1:size(offsets,1)
     dx = offsets(k,1); dy = offsets(k,2);
     P = zeros(nLevels,nLevels);
