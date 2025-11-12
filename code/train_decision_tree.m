@@ -1,8 +1,6 @@
-function model = train_decision_tree(X,y,maxDepth)
-t = fitctree(X,y,'MaxNumSplits',maxDepth);
+function model = train_decision_tree(X,y,maxSplits)
+% Use fitctree if available for reliable tree implementation
+if nargin<3, maxSplits = 20; end
+t = fitctree(X, y, 'MaxNumSplits', maxSplits);
 model.tree = t;
-end
-
-function ypred = predict_decision_tree(model,Xtest)
-ypred = predict(model.tree,Xtest);
 end
